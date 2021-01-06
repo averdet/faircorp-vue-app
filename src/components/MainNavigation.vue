@@ -1,10 +1,10 @@
 <template>
   <ul class="nav nav-tabs">
-    <li class="nav-item" @click="changeNav('window')">
-      <a class="nav-link" :class="{active: isCurrentNav('window')}" aria-current="page" href="#">Windows</a>
+    <li class="nav-item" @click="changeNav('windows')">
+      <a class="nav-link" :class="{active: isCurrentNav('windows')}" aria-current="page" href="#">Windows</a>
     </li>
-    <li class="nav-item" @click="changeNav('room')">
-      <a class="nav-link" :class="{active: isCurrentNav('room')}" href="#" tabindex="-1" aria-disabled="true">Rooms</a>
+    <li class="nav-item" @click="changeNav('rooms')">
+      <a class="nav-link" :class="{active: isCurrentNav('rooms')}" href="#" tabindex="-1" aria-disabled="true">Rooms</a>
     </li>
   </ul>
 </template>
@@ -15,12 +15,13 @@ export default {
     name: 'MainNavigation',
     data: function() {
 	return {
-	    currentNavItem: 'window'
+	    currentNavItem: 'windows'
 	    }
     },
     methods: {
 	changeNav(item) {
 	    this.currentNavItem = item;
+	    this.$emit('nav-updated',item);
 	},
 	isCurrentNav(item) {
 	    return this.currentNavItem === item;
