@@ -1,4 +1,6 @@
-# solution
+# Web & Mobile Programming Frontend
+
+[Deployed Frontend on Gitlab Pages](http://alexandre.verdet.gitlab.emse.fr/wmp-frontend/)
 
 ## Project setup
 ```
