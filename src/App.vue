@@ -5,8 +5,12 @@
     </header>
 
     <section class="main-content w-50 mx-auto">
-      <main-navigation></main-navigation>
-      <windows-list></windows-list>
+      <main-navigation
+	@nav-updated="updateNav"
+	>
+      </main-navigation>
+      <windows-list v-if="isCurrentNav('windows')"></windows-list>
+      <rooms-list v-if="isCurrentNav('rooms')"></rooms-list>
     </section>
   </div>
 </template>
@@ -14,18 +18,29 @@
 <script>
 import MainNavigation from './components/MainNavigation.vue';
 import WindowsList from './components/WindowsList.vue';
+import RoomsList from './components/RoomsList.vue';
 
 export default {
   name: 'App',
   components: {
     MainNavigation,
-    WindowsList
+    WindowsList,
+    RoomsList
   },
   data: function() {
     return {
-      title: 'My App Title'
+	title: 'My App Title',
+	currentNavItem: 'windows'
     }
-  }
+  },
+    methods: {
+	updateNav(item) {
+	    this.currentNavItem = item;
+	},
+	isCurrentNav(item) {
+	    return this.currentNavItem === item;
+	}
+    }
 }
 </script>
 
