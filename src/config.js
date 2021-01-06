@@ -1,1 +1,1 @@
-export const API_HOST = `${process.env.my_api}`;
+export const API_HOST = 'https://faircorp-alexandre-verdet.cleverapps.io';
