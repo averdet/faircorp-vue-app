@@ -8,6 +8,10 @@
       @window-deleted="deleteWindow"
     >
     </windows-list-item>
+    <window-new
+      @window-added="addWindow"
+    >
+    </window-new>
   </div>
 </template>
 
@@ -16,10 +20,12 @@
 import axios from 'axios';
 import {API_HOST} from '../config';
 import WindowsListItem from './WindowsListItem';
+import WindowNew from './WindowNew.vue';
 
 export default {
   components: {
-    WindowsListItem
+      WindowsListItem,
+      WindowNew
   },
   name: 'WindowsList',
   data: function() {
@@ -44,6 +50,9 @@ export default {
       if (index > -1) {
 	this.windows.splice(index, 1);
       }
+    },
+      addWindow(newWindow) {
+	this.windows.push(newWindow);
     }
   }
 }
