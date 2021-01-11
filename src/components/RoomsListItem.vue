@@ -2,7 +2,7 @@
   <div class="room border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
     <div class="top-row d-flex" @click="toggleExpand">
       <div class="room-name fw-bold pe-3">{{room.name}}</div>
-      <div class="room-name text-muted">{{room.roomName}}</div>
+      <div  class="room-name text-muted">{{room.building.name}}</div>
 
       <div class="expand-button ms-auto">
         {{ isExpanded ? '&#9660;' : '&#9658;' }}

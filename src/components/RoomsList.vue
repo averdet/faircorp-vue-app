@@ -7,6 +7,10 @@
       @room-deleted="deleteRoom"
     >
     </rooms-list-item>
+    <room-new
+      @room-added="addRoom"
+    >
+    </room-new>
   </div>
 </template>
 
@@ -15,10 +19,12 @@
 import axios from 'axios';
 import {API_HOST} from '../config';
 import RoomsListItem from './RoomsListItem';
+import RoomNew from './RoomNew';
 
 export default {
   components: {
-    RoomsListItem
+      RoomsListItem,
+      RoomNew
   },
   name: 'RoomsList',
   data: function() {
@@ -38,7 +44,10 @@ export default {
       if (index > -1) {
 	this.rooms.splice(index, 1);
       }
-    }
+    },
+      addRoom(newRoom) {
+	  this.rooms.push(newRoom);
+      }
   }
 }
 </script>
