@@ -59,9 +59,11 @@ export default {
       },
       async switchWindows() {
 	  let response = await axios.put(`${API_HOST}/api/rooms/${this.room.id}/switchWindows`);
+	  this.$emit('room-updated', response.data);
       },
       async switchHeaters() {
 	  let response = await axios.put(`${API_HOST}/api/rooms/${this.room.id}/switchHeaters`);
+	  this.$emit('room-updated', response.data);
       },
       updateWindow(newWindow) {
       /* Find the place of window objectw ith the same Id in the array, and replace it */
