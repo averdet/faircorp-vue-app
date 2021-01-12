@@ -3,7 +3,8 @@
     <rooms-list-item 
       v-for="room in rooms"
       :room="room"
-      :key="room.id"  
+      :key="room.id"
+      @room-updated="updateRoom"
       @room-deleted="deleteRoom"
     >
     </rooms-list-item>
@@ -47,7 +48,11 @@ export default {
     },
       addRoom(newRoom) {
 	  this.rooms.push(newRoom);
-      }
+      },
+      updateRoom(newRoom) {
+	  let index = this.rooms.findIndex(room => room.id === newRoom.id);
+	  this.rooms.splice(index, 1, newRoom);
+	  }
   }
 }
 </script>
