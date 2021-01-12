@@ -29,7 +29,7 @@ export default {
   },
   data: function() {
     return {
-	title: 'My App Title',
+	title: 'Faircorp App',
 	currentNavItem: 'windows'
     }
   },
@@ -40,6 +40,9 @@ export default {
 	isCurrentNav(item) {
 	    return this.currentNavItem === item;
 	}
+    },
+    created: function() {
+	document.title = this.title
     }
 }
 </script>
