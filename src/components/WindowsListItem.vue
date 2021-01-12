@@ -2,7 +2,7 @@
   <div class="window border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
     <div class="top-row d-flex" @click="toggleExpand">
       <div class="window-name fw-bold pe-3">{{window.name}}</div>
-      <div v-if="window.room != null" class="room-name text-muted">{{window.room.name}}</div>
+      <div v-if="room === null" class="room-name text-muted">{{window.room.name}}</div>
       <div v-if="room != null" class="room-name text-muted">{{room.name}}</div>
 
       <div class="open-status ms-4" :class="{open: isWindowOpen, closed: !isWindowOpen}">
