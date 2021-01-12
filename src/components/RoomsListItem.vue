@@ -66,14 +66,14 @@ export default {
 	  this.$emit('room-updated', response.data);
       },
       updateWindow(newWindow) {
-      /* Find the place of window objectw ith the same Id in the array, and replace it */
-      let index = this.windows.findIndex(window => window.id === newWindow.id);
-      this.windows.splice(index, 1, newWindow);
+      /* Find the place of window object with the same Id in the array, and replace it */
+	  let index = this.room.windowList.findIndex(window => window.id === newWindow.id);
+	  this.room.windowList.splice(index, 1, newWindow);
     },
     deleteWindow(windowId) {
-      let index = this.windows.findIndex(window => window.id === windowId);
+      let index = this.room.windowList.findIndex(window => window.id === windowId);
       if (index > -1) {
-	this.windows.splice(index, 1);
+	this.room.windowList.splice(index, 1);
       }
     }
   }
