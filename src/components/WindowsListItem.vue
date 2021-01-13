@@ -1,69 +1,102 @@
 <template>
-  <div class="window border border-secondary rounded p-2 mb-2" :class="{expanded: isExpanded}">
-    <div class="top-row d-flex" @click="toggleExpand">
-      <div class="window-name fw-bold pe-3">{{window.name}}</div>
-      <div v-if="window.room != null" class="room-name text-muted">{{window.room.name}}</div>
-      <div v-else class="room-name text-muted">{{room.name}}</div>
+  <div class="card">
+    <div class="card-header">
+      <h2 class="mb-0">
+        <button
+          class="btn btn-link btn-block text-left d-flex flex-column flex-sm-row"
+          type="button"
+          @click="toggleExpand"
+        >
+          <div class="mr-2">
+            <strong>
+            {{ window.name }}
+            </strong>
+          </div>
+          <div v-if="window.room != null" class="room-name text-muted mx-2">
+            {{ window.room.name }}
+          </div>
+          <div v-else class="room-name text-muted mx-3">{{ room.name }}</div>
+          <div
+            class="open-status ms-4 text-uppercase"
+            :class="{ open: isWindowOpen, closed: !isWindowOpen }"
+          >
+            <template v-if="isWindowOpen">
+              <span class="icon">&#x2B24;</span> Open
+            </template>
+            <template v-else>
+              <span class="icon">&#x2716;</span> Closed
+            </template>
+          </div>
 
-      <div class="open-status ms-4" :class="{open: isWindowOpen, closed: !isWindowOpen}">
-        <template v-if="isWindowOpen">
-          <span class="icon">&#x2B24;</span> Open
-        </template>
-        <template v-else>
-          <span class="icon">&#x2716;</span> Closed
-        </template>
-      </div>
-
-      <div class="expand-button ms-auto">
-        {{ isExpanded ? '&#9660;' : '&#9658;' }}
-      </div>
+          <div class="expand-button ml-auto">
+            {{ isExpanded ? "&#9660;" : "&#9658;" }}
+          </div>
+        </button>
+      </h2>
     </div>
-    <template v-if="isExpanded">
-      <hr/>
-      <div class="details d-flex">
-        <button type="button" class="btn btn-secondary me-2" @click="switchWindow">{{ isWindowOpen ? 'Close' : 'Open' }} window</button>
-        <button type="button" class="btn btn-danger " @click="deleteWindow">Delete window</button>
+
+    <template
+      class="collapse show"
+      v-if="isExpanded"
+    >
+      <div class="card-body" >
+        <div class="details d-flex">
+          <button
+            type="button"
+            class="btn btn-secondary me-2 mr-3"
+            @click="switchWindow"
+          >
+            {{ isWindowOpen ? "Close" : "Open" }} window
+          </button>
+          <button type="button" class="btn btn-danger" @click="deleteWindow">
+            Delete window
+          </button>
+        </div>
       </div>
     </template>
   </div>
+
 </template>
 
 <script>
-import axios from 'axios';
-import {API_HOST} from '../config';
+import axios from "axios";
+import { API_HOST } from "../config";
 
 export default {
-  name: 'WindowsListItem',
-  props: ['window', 'room'],
-  data: function() {
+  name: "WindowsListItem",
+  props: ["window", "room"],
+  data: function () {
     return {
-      isExpanded: false
-    }
-  }, 
+      isExpanded: false,
+    };
+  },
   computed: {
-    isWindowOpen: function() {
-      return this.window.windowStatus === 'OPEN'; 
-    }
+    isWindowOpen: function () {
+      return this.window.windowStatus === "OPEN";
+    },
   },
   methods: {
     toggleExpand() {
       this.isExpanded = !this.isExpanded;
     },
     async switchWindow() {
-      let response = await axios.put(`${API_HOST}/api/windows/${this.window.id}/switch`);
+      let response = await axios.put(
+        `${API_HOST}/api/windows/${this.window.id}/switch`
+      );
       let updatedWindow = response.data;
-      this.$emit('window-updated', updatedWindow);
+      this.$emit("window-updated", updatedWindow);
     },
     async deleteWindow() {
-      let response = await axios.delete(`${API_HOST}/api/windows/${this.window.id}`);
-      this.$emit('window-deleted', this.window.id);
-    }
-  }
-}
+      let response = await axios.delete(
+        `${API_HOST}/api/windows/${this.window.id}`
+      );
+      this.$emit("window-deleted", this.window.id);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-
 .open-status {
   .icon {
     position: relative;
