@@ -72,6 +72,17 @@
             Delete room
           </button>
         </div>
+        <div class="windows-list mt-4">
+          <windows-list-item
+            v-for="window in room.windowList"
+            :window="window"
+            :key="window.id"
+            :room="room"
+            @window-updated="updateWindow"
+            @window-deleted="deleteWindow"
+          >
+          </windows-list-item>
+        </div>
       </div>
     </template>
   </div>
