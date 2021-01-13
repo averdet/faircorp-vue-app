@@ -37,7 +37,7 @@
                 id="room_building"
                 name="room_building"
           >
-                <option v-for="building in buildings" v-bind:key="building">
+                <option v-for="building in buildings" v-bind:value="building">
                   {{ building.name }}
                 </option>
           </select>
@@ -75,7 +75,7 @@
                 name="room_floor"
           />
         </div>
-        <button type="submit" class="btn btn-primary" @click="addRoom">
+        <button type="button" class="btn btn-primary" @click="addRoom">
           Create Room
         </button>
       </form>

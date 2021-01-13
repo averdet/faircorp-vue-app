@@ -48,12 +48,12 @@
             id="window_room"
             name="window_room"
           >
-            <option v-for="room in rooms" v-bind:key="room">
+            <option v-for="room in rooms" v-bind:value="room">
               {{ room.name }}
             </option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary" @click="addWindow">
+        <button type="button" class="btn btn-primary" @click="addWindow">
           Create Window
         </button>
       </form>
