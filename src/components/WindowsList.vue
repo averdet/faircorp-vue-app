@@ -1,5 +1,5 @@
 <template>
-  <div class="windows-list pt-3">
+  <div class="accordion" id="accordion">
     <windows-list-item 
       v-for="window in windows"
       :window="window"
@@ -12,7 +12,7 @@
       @window-added="addWindow"
     >
     </window-new>
-  </div>
+</div>
 </template>
 
 

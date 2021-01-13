@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <header>
-      <div class="title">{{title}}</div>
-    </header>
-
-    <section class="main-content w-50 mx-auto">
-      <main-navigation
-	@nav-updated="updateNav"
-	>
-      </main-navigation>
-      <windows-list v-if="isCurrentNav('windows')"></windows-list>
-      <rooms-list v-if="isCurrentNav('rooms')"></rooms-list>
-    </section>
+    <main-navigation @nav-updated="updateNav" :title="title"></main-navigation>
+    <main class="container">
+      <section class="main-content mx-auto">
+        <windows-list v-if="isCurrentNav('windows')"></windows-list>
+        <rooms-list v-if="isCurrentNav('rooms')"></rooms-list>
+      </section>
+    </main>
   </div>
 </template>
 
@@ -29,8 +24,8 @@ export default {
   },
   data: function() {
     return {
-	title: 'Faircorp App',
-	currentNavItem: 'windows'
+      title: 'Faircorp',
+      currentNavItem: 'windows'
     }
   },
     methods: {
@@ -52,9 +47,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  // margin-top: 60px;
 }
 
 </style>

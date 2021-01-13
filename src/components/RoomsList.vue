@@ -1,5 +1,5 @@
 <template>
-  <div class="rooms-list pt-3">
+<div class="accordion" id="accordion">
     <rooms-list-item 
       v-for="room in rooms"
       :room="room"
@@ -12,7 +12,8 @@
       @room-added="addRoom"
     >
     </room-new>
-  </div>
+</div>
+  
 </template>
 
 

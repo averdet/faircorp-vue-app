@@ -2,7 +2,7 @@
 
 [Deployed Frontend on EMSE Gitlab Pages](http://alexandre.verdet.gitlab.emse.fr/wmp-frontend/)
 
-- Author : Alexandre Verdet, with the help of Erwan Tinen and Shaokun Xie
+- Author : Alexandre Verdet, Erwan Tinen and Shaokun Xie
 - VueJS Frontend App of the 2020 Web & Mobile Programing project for [EMSE's Computer Science Major](https://ci.mines-stetienne.fr/m-info/wmp/)
 - Based on [Quentin Richaud's course](https://gitlab.com/emse1/cours_js_1)
 
